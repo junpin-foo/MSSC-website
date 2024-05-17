@@ -24,7 +24,7 @@ const Gallery = () => {
                     viewport={{once: true}} //do animation once
                 >
                     <CustomImage
-                        imageSource={ImageOne}
+                        imageSource={ImageFour}
                         imageStyle={{ width: "85%" }}
                     />
                 </motion.div>
@@ -36,10 +36,19 @@ const Gallery = () => {
                     transition={{duration: 0.5, delay: 0.25, ease: "easeOut"}}
                     viewport={{once: true}}
                 >
-                    <CustomImage
+                    <div className={styles.textdiv}> 
+                        <h1 className={styles.h1}> Our mission: </h1>
+                        <br></br>
+                        <p className={styles.p}> 
+                            To cultivate a strong sense of community amongst 
+                            Malaysians and Singaporeans at SFU, while promoting 
+                            our respective cultures and providing a safe space 
+                            for anyone interested!</p>
+                    </div>
+                    {/* <CustomImage
                         imageSource={ImageTwo}
                         imageStyle={{ width: "95%" }}
-                    />
+                    /> */}
                 </motion.div>
                 <motion.div
                     className={styles.imageContainer}
@@ -63,7 +72,7 @@ const Gallery = () => {
                     viewport={{once: true}}
                 >
                     <CustomImage
-                        imageSource={ImageFour}
+                        imageSource={ImageOne}
                         imageStyle={{ width: "75%" }}
                     />
                 </motion.div>
