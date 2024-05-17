@@ -1,0 +1,43 @@
+.main {
+    background-color: #333333;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 10vw 0 10vw;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Define a keyframe animation */
+@keyframes moveUpDown {
+    0% {
+        transform: translateY(0.5rem); /* Start position */
+    }
+    50% {
+        transform: translateY(1rem); /* Move up */
+    }
+    100% {
+        transform: translateY(0.5rem); /* Move down */
+    }
+}
+
+/* Apply the animation to the .img class */
+.img {
+    animation: moveUpDown 2s ease infinite; /* Adjust the duration and timing function as needed */
+    transform: scale(75%);
+}
+
+.h1 {
+    font-size: 30px;
+}
