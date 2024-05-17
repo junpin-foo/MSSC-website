@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./Gallery.module.css";
 import CustomImage from "../Images/Images";
 //TODO: dynamically get images from google drive
+import ImageOne from "../../../public/mssc_main.jpg";
 import ImageTwo from "../../../public/tempImages/Darian2.png";
 import ImageFour from "../../../public/tempImages/Darian4.png";
 import ImageFive from "../../../public/tempImages/Darian5.png";
@@ -16,14 +17,14 @@ const Gallery = () => {
                 <motion.div
                     className={styles.imageContainer}
                     style={{ justifyContent: "flex-start" }}
-                    initial={{opacity: 0, x: -400, y: -400}}
+                    initial={{opacity: 0}}
                     whileInView={{opacity: 1, x: 0, y: 0}}
-                    transition={{duration: 0.5, delay: 0.75, ease: "easeOut"}}
+                    transition={{duration: 0.5, delay: 0.35, ease: "easeOut"}}
                     viewport={{once: true}}
                 >
                     <CustomImage
-                        imageSource={ImageFour}
-                        imageStyle={{ width: "85%" }}
+                        imageSource={ImageOne}
+                        imageStyle={{ width: "90%" }}
                     />
                 </motion.div>
                 <motion.div
@@ -31,10 +32,10 @@ const Gallery = () => {
                     style={{ justifyContent: "flex-start" }}
                     initial={{opacity: 0, x: 200, y: -200}}
                     whileInView={{opacity: 1, x: 0, y: 0}}
-                    transition={{duration: 0.5, delay: 0.55, ease: "easeOut"}}
+                    transition={{duration: 0.5, delay: 0.35, ease: "easeOut"}}
                     viewport={{once: true}}
                 >
-                    <div className={styles.textdiv1}> 
+                    <div className={styles.textdiv}> 
                         <h1 className={styles.h1}> Our mission: </h1>
                         <br></br>
                         <p className={styles.p}> 
@@ -62,7 +63,7 @@ const Gallery = () => {
                     style={{ justifyContent: "flex-start" }}
                     initial={{opacity: 0, x: 200, y: 100}}
                     whileInView={{opacity: 1, x: 0, y: 0}}
-                    transition={{duration: 0.5, delay: 0.55, ease: "easeOut"}}
+                    transition={{duration: 0.5, delay: 0.35, ease: "easeOut"}}
                     viewport={{once: true}}
                 >
                     <CustomImage
@@ -75,10 +76,10 @@ const Gallery = () => {
                     style={{ justifyContent: "flex-start" }}
                     initial={{opacity: 0, x: -200, y: -100}}
                     whileInView={{opacity: 1, x: 0, y: 0}}
-                    transition={{duration: 0.5, delay: 0.75, ease: "easeOut"}}
+                    transition={{duration: 0.5, delay: 0.25, ease: "easeOut"}}
                     viewport={{once: true}}
                 >
-                    <div className={styles.textdiv2}> 
+                    <div className={styles.textdiv}> 
                         <h1 className={styles.h1}> Lorem Ipsum: </h1>
                         <br></br>
                         <p className={styles.p}> 
