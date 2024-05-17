@@ -17,7 +17,7 @@ const CustomImage: React.FC<CustomImageProps> = ({
         <Image
             className={styles.image}
             src={imageSource}
-            alt="image of an electric car"
+            alt="mssc img"
             style={imageStyle}
         />
     );

@@ -1,6 +1,7 @@
 .section {
     height: 100%;
     padding: 10rem 10vw 10rem 10vw;
+    background-color: #fff6ed;
 }
 
 .gallery {
@@ -29,15 +30,22 @@
     }
 }
 
-.textdiv {
+.textdiv1 {
     border: 5px outset red;
+    padding: 100px;
+}
+
+.textdiv2 {
+    border: 5px outset blue;
     padding: 100px;
 }
 
 .h1 {
     font-size: 40px;
+    color: black;
 }
 
 .p {
     font-size: 30px;
+    color: black;
 }
