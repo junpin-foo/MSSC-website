@@ -6,6 +6,11 @@
 .pnp.js
 .yarn/install-state.gz
 
+#client
+client/node_modules
+client/next-env.d.ts
+client/.next
+
 # testing
 /coverage
 

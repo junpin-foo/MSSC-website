@@ -2,12 +2,13 @@ FROM node:latest
 
 WORKDIR /app
 
-COPY package.json .
+COPY client/package.json client/package-lock.json ./
 
 RUN npm install
 
-COPY . .
+COPY client/ ./
 
 RUN npm run build
 
-CMD ["npm", "start"]
+CMD ["npm", "start"] 
+
