@@ -1,8 +1,7 @@
-
 import React from 'react';
 import styles from './MainPage.module.css';
 import WelcomeSection from '../WelcomeSection/WelcomeSection';
-import NavigationBar from '../NavigationBar/NavigationBar';
+import NavigationBar from '../../Layout/NavigationBar/NavigationBar';
 
 const MainPage: React.FC = () => {
     const scrollToSection = (sectionId: string) => {
