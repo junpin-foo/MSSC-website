@@ -66,7 +66,7 @@ const WelcomeSection: React.FC = () => {
 
     // Floating flowers
     const flowers: THREE.Mesh[] = [];
-    const flowerColors = [0xFF1493, 0xFF0000]; 
+    const flowerColors = [0xbe2120, 0xac3aa9]; 
 
     for (let i = 0; i < 20; i++) {
       const flowerShape = createFlowerShape();
