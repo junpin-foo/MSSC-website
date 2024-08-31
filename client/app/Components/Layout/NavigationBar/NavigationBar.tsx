@@ -11,11 +11,11 @@ const NavigationBar = () => {
   const pathname = usePathname();
 
   const navItems = [
-    { name: 'Home', path: '/' },
+    { name: 'Home', path: '/home' },
+    { name: 'Dashboard', path: '/dashboard' },
     { name: 'Past Events', path: '/past-events' },
-    { name: 'Upcoming Events', path: '/upcoming-events' },
     { name: 'About Us', path: '/about' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'Contact Us', path: '/contact' },
   ];
 
   const handleNavItemClick = (path: string) => {
