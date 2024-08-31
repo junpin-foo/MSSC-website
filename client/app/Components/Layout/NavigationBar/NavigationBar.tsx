@@ -11,12 +11,22 @@ const NavigationBar = () => {
   const pathname = usePathname();
 
   const navItems = [
-    { name: 'Home', path: '/home' },
+    { name: 'Home', path: '/' },
     { name: 'Past Events', path: '/past-events' },
     { name: 'Upcoming Events', path: '/upcoming-events' },
     { name: 'About Us', path: '/about' },
     { name: 'Contact', path: '/contact' },
   ];
+
+  const handleNavItemClick = (path: string) => {
+    setIsOpen(false);
+    if (pathname === '/' && path !== '/') {
+      // If on home page and clicking a section, scroll to it
+      const sectionId = path.replace('/', '');
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    }
+    // For other cases, Next.js Link component will handle navigation
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-[#fff6ed] z-50">
@@ -31,7 +41,16 @@ const NavigationBar = () => {
         <ul className="hidden md:flex space-x-8">
           {navItems.map((item) => (
             <li key={item.name}>
-              <Link href={item.path} className={`text-black font-bold font-georgia hover:text-[#ffd0a1] transition duration-100 ${pathname === item.path ? 'text-[#ffd0a1]' : ''}`}>
+              <Link 
+                href={item.path} 
+                className={`text-black font-bold font-georgia hover:text-[#ffd0a1] transition duration-100 ${pathname === item.path ? 'text-[#ffd0a1]' : ''}`}
+                onClick={(e) => {
+                  if (pathname === '/' && item.path !== '/') {
+                    e.preventDefault();
+                    handleNavItemClick(item.path);
+                  }
+                }}
+              >
                 {item.name}
               </Link>
             </li>
@@ -50,7 +69,17 @@ const NavigationBar = () => {
           <ul className="px-4 py-2">
             {navItems.map((item) => (
               <li key={item.name} className="my-2">
-                <Link href={item.path} className={`text-black font-bold font-georgia hover:text-[#ffd0a1] transition duration-100 ${pathname === item.path ? 'text-[#ffd0a1]' : ''}`} onClick={() => setIsOpen(false)}>
+                <Link 
+                  href={item.path} 
+                  className={`text-black font-bold font-georgia hover:text-[#ffd0a1] transition duration-100 ${pathname === item.path ? 'text-[#ffd0a1]' : ''}`}
+                  onClick={(e) => {
+                    if (pathname === '/' && item.path !== '/') {
+                      e.preventDefault();
+                      handleNavItemClick(item.path);
+                    }
+                    setIsOpen(false);
+                  }}
+                >
                   {item.name}
                 </Link>
               </li>
