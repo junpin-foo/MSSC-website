@@ -19,13 +19,13 @@ export default function PastEventsPage() {
       title: "Malaysian Night 2023",
       date: "November 15, 2023",
       description: "A night of Malaysian culture, food, and performances.",
-      imageSrc: "/api/placeholder/400/300"
+      imageSrc: "https://picsum.photos/400/300?random=1"
     },
     {
       title: "Singaporean Food Festival",
       date: "September 5, 2023",
       description: "Showcasing the best of Singaporean cuisine on campus.",
-      imageSrc: "/api/placeholder/400/300"
+      imageSrc: "https://picsum.photos/400/300?random=1"
     },
 
   ];

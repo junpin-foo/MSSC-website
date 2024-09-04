@@ -40,11 +40,11 @@ export default function DashboardPage() {
 
   const instagramPosts = [
     {
-      imageSrc: "/api/placeholder/400/400",
+      imageSrc: "https://picsum.photos/400/300?random=1",
       caption: "Join us for our upcoming Malaysian Culture Night! RSVP now!"
     },
     {
-      imageSrc: "/api/placeholder/400/400",
+      imageSrc: "https://picsum.photos/400/300?random=1",
       caption: "Throwback to last month's Singaporean Food Festival. What a feast!"
     },
 
