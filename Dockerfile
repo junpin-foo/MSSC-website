@@ -2,12 +2,12 @@ FROM node:latest
 
 WORKDIR /app
 
-COPY package.json .
+COPY client/package*.json ./
 
 RUN npm install
 
-COPY . .
+COPY client/ ./
 
-RUN npm run build
+ENV NODE_ENV=development
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
