@@ -30,4 +30,7 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  .pt-safe {
+    padding-top: calc(var(--navbar-height) + 1rem);
+  }
 }

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import styles from "./Gallery.module.css";
-import CustomImage from "../Images/Images";
+import CustomImage from "../../Images/Images";
 //TODO: dynamically get images from google drive
 import ImageOne from "../../../public/mssc_main.jpg";
 import ImageTwo from "../../../public/tempImages/Darian2.png";

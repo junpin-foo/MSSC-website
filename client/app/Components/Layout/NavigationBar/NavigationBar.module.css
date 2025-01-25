@@ -1,7 +1,11 @@
 .header {
     background-color: #fff6ed;
-    padding: 10px 0;
     z-index: 1;
+    height: 6vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .navbar {
@@ -10,11 +14,8 @@
     justify-content: space-evenly;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 12px;
     z-index: 1;
-}
-
-.logo img {
 }
 
 .navLinks {
