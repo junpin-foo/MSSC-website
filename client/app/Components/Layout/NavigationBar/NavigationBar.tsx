@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
@@ -8,86 +8,101 @@ import { Menu, X } from 'lucide-react';
 
 const NavigationBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
   const navItems = [
-    { name: 'Home', path: '/home' },
-    { name: 'Dashboard', path: '/dashboard' },
-    { name: 'Past Events', path: '/past-events' },
-    { name: 'About Us', path: '/about' },
-    { name: 'Contact Us', path: '/contact' },
+    { name: 'Welcome', path: '/#welcome' },
+    { name: 'About', path: '/#about' },
+    { name: 'Events', path: '/#events' },
+    { name: 'Contact', path: '/#contact' },
   ];
 
-  const handleNavItemClick = (path: string) => {
-    setIsOpen(false);
-    if (pathname === '/' && path !== '/') {
-      // If on home page and clicking a section, scroll to it
-      const sectionId = path.replace('/', '');
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    e.preventDefault();
+    const sectionId = path.replace('/#', '');
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsOpen(false);
     }
-    // For other cases, Next.js Link component will handle navigation
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-[#fff6ed] z-50">
-      <nav className="container mx-auto px-4 py-2 flex items-center justify-between">
-        <div className="flex items-center">
-          <Link href="/">
-            <Image src="/mssc-logo.png" alt="Logo" width={85} height={50} className="h-20 w-auto object-contain" />
+    <div className="fixed top-0 left-0 right-0 px-4 py-4 z-50 flex justify-center">
+      <header className={`w-full max-w-4xl rounded-full transition-all duration-300 
+        ${isScrolled ? 'bg-black/90 backdrop-blur-sm shadow-lg' : 'bg-black/80'}
+        ${isOpen ? 'rounded-2xl' : 'rounded-full'}`}>
+        
+        <nav className="h-16 px-6 flex items-center justify-between">
+          <Link href="/" className="flex items-center">
+            <Image 
+              src="/mssc-nav.png" 
+              alt="MSSC Logo" 
+              width={48} 
+              height={48} 
+              className="w-16 h-16"
+              priority
+            />
           </Link>
-        </div>
-        
-        {/* Desktop menu */}
-        <ul className="hidden md:flex space-x-8">
-          {navItems.map((item) => (
-            <li key={item.name}>
-              <Link 
-                href={item.path} 
-                className={`text-black font-bold font-georgia hover:text-[#ffd0a1] transition duration-100 ${pathname === item.path ? 'text-[#ffd0a1]' : ''}`}
-                onClick={(e) => {
-                  if (pathname === '/' && item.path !== '/') {
-                    e.preventDefault();
-                    handleNavItemClick(item.path);
-                  }
-                }}
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        
-        {/* Mobile menu button */}
-        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </nav>
-      
-      {/* Mobile menu */}
-      {isOpen && (
-        <div className="md:hidden bg-[#fff6ed]">
-          <ul className="px-4 py-2">
+          
+          {/* Desktop Navigation */}
+          <ul className="hidden md:flex space-x-8">
             {navItems.map((item) => (
-              <li key={item.name} className="my-2">
+              <li key={item.name} className="group">
                 <Link 
-                  href={item.path} 
-                  className={`text-black font-bold font-georgia hover:text-[#ffd0a1] transition duration-100 ${pathname === item.path ? 'text-[#ffd0a1]' : ''}`}
-                  onClick={(e) => {
-                    if (pathname === '/' && item.path !== '/') {
-                      e.preventDefault();
-                      handleNavItemClick(item.path);
-                    }
-                    setIsOpen(false);
-                  }}
+                  href={item.path}
+                  onClick={(e) => handleScroll(e, item.path)}
+                  className={`text-base font-medium text-white hover:text-[#fff7ec] transition-all duration-300
+                    group-hover:scale-110 inline-block transform origin-center
+                    ${pathname === item.path ? 'text-[#fff7ec]' : ''}`}
                 >
                   {item.name}
                 </Link>
               </li>
             ))}
           </ul>
-        </div>
-      )}
-    </header>
+
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
+            className="md:hidden p-2 text-white hover:text-[#fff7ec] transition-colors"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </nav>
+
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="md:hidden border-t border-white/20">
+            <ul className="px-6 py-4">
+              {navItems.map((item) => (
+                <li key={item.name} className="py-2 group">
+                  <Link 
+                    href={item.path}
+                    onClick={(e) => handleScroll(e, item.path)}
+                    className={`block text-base font-medium text-white hover:text-[#fff7ec] 
+                      transition-all duration-300 group-hover:scale-110 inline-block transform origin-center
+                      ${pathname === item.path ? 'text-[#fff7ec]' : ''}`}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </header>
+    </div>
   );
 };
 

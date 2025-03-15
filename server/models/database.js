@@ -1,25 +1,5 @@
 const { initializeApp } = require('firebase/app')
-const { getFirestore, doc, setDoc, collection, getDocs, query, where } = require('firebase/firestore');
-
-
-const firebaseConfig = {
-
-  apiKey: "AIzaSyC9lldVVCBSQwb1nwH7M57X07DvQnZqQT4",
-
-  authDomain: "mssc-1b918.firebaseapp.com",
-
-  projectId: "mssc-1b918",
-
-  storageBucket: "mssc-1b918.appspot.com",
-
-  messagingSenderId: "42537672234",
-
-  appId: "1:42537672234:web:207138adabf3baa01dad53",
-
-  measurementId: "G-5M3E2FM99X"
-
-};
-
+const { getFirestore, doc, setDoc, collection, getDocs, query, where } = require('firebase/firestore')
 
 // Initialize Firebase
 
